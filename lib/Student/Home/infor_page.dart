@@ -224,7 +224,7 @@ class Interested extends StatelessWidget {
                       height: 150,
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(10.0),
+                        borderRadius: BorderRadius.circular(16.0),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.white.withOpacity(0.1),
@@ -262,7 +262,7 @@ class News1 extends StatelessWidget {
     return Row(
       children: [
         ClipRRect(
-            borderRadius: BorderRadius.circular(10.0),
+            borderRadius: BorderRadius.circular(16.0),
             child: Image.asset(image)),
         Padding(
           padding: const EdgeInsets.all(16.0),
