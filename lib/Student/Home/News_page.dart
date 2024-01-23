@@ -305,7 +305,7 @@ class News extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(10.0),
+              borderRadius: BorderRadius.circular(16.0),
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.withOpacity(0.2),
@@ -323,7 +323,7 @@ class News extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(10.0),
+              borderRadius: BorderRadius.circular(16.0),
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.withOpacity(0.2),
@@ -356,7 +356,7 @@ class News1 extends StatelessWidget {
     return Row(
       children: [
         ClipRRect(
-            borderRadius: BorderRadius.circular(10.0),
+            borderRadius: BorderRadius.circular(16.0),
             child: Image.asset(image)),
         Padding(
           padding: const EdgeInsets.all(8.0),
