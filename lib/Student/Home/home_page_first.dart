@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:untitled/Student/Home/News_page.dart';
-import 'package:untitled/Student/Home/infor_page.dart';
 import 'package:untitled/Student/image.dart';
 
 class HomePage extends StatefulWidget {
@@ -26,9 +25,7 @@ class _HomePageState extends State<HomePage> {
                 height: 30,
               ),
               Information(),
-
               News(),
-
               VTC(),
             ],
           ),
@@ -79,7 +76,6 @@ class Appbar extends StatelessWidget {
                     "Đơn vị đồng hành ",
                     style: TextStyle(color: Color(0xFFBEC3C9), fontSize: 12),
                   )
-
                 ],
               ),
             ],
@@ -108,6 +104,7 @@ class Welcome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Padding(
           padding: const EdgeInsets.all(15.0),
@@ -149,7 +146,7 @@ class Welcome extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(20)),
               color: Color(0xFF4BB0EC)),
           child: Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(16.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -193,122 +190,80 @@ class Information extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-          width: 500,
+    return Container(
+      height: 350,
+      child: DefaultTabController(
+        length: 4,
+        child: SizedBox(
           height: 30,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            children: <Widget>[
-              InkResponse(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (ctx) => const InforPage()));
-                  },
-                  child: a("Tin từ ban tổ chức")),
-              const SizedBox(
-                width: 23,
-              ),
-              Column(
-                children: [
-                  const Text(
-                    "Sự kiện",
-                    style: TextStyle(
-                        color: Color(0xFF404D59),
-                        fontWeight: FontWeight.w700,
-                        fontSize: 16),
+          child: Column(
+            children: [
+              const TabBar(
+                indicatorColor:  Color(0xFFF76288),
+                indicatorSize: TabBarIndicatorSize.label,
+                isScrollable: true,
+                labelColor: Colors.black,
+                unselectedLabelColor: Color(0xFFBEC3C9),
+                tabs: [
+                  Tab(
+                    text: "Tin từ ban tổ chức",
                   ),
-                  Container(
-                    width: 40,
-                    height: 3,
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(32)),
-                      color: Color(0xFFF76288),
-                    ),
-                  )
+                  Tab(text: "Sự kiện"),
+                  Tab(text: "Tin tức muôn nơi"),
+                  Tab(text: "Tạp chí tiếng anh"),
                 ],
               ),
-              const SizedBox(
-                width: 23,
+              Expanded(
+                child: TabBarView(
+                  children: [
+                    article(
+                        "Học sinh trung học cơ sở được xét tốt nghiệp lần hai như thế nào?"),
+                    article(
+                        "Thi THPT quốc gia 2019 sẽ thay đổi như thế nào?"),
+                    article(
+                        "Bộ GDĐT đưa ra tiêu chuẩn, điều kiện xét thăng hạng giảng viên đại học"),
+                    article(
+                        "Học sinh Việt Nam đang được đào tạo các trình độ tại Hungary ")
+                  ],
+                ),
               ),
-              InkResponse(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (ctx) => const InforPage()));
-                  },
-                  child: a("Tin tức muôn nơi")),
-              const SizedBox(
-                width: 23,
-              ),
-              InkResponse(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (ctx) => const InforPage()));
-                  },
-                  child: a("Tạp chí tiếng anh")),
             ],
           ),
         ),
-        SizedBox(
-          width: 500,
-          height: 320,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            children: <Widget>[
-              tintuc(
-                  "assets/Rectangle 17.png",
-                  "Thi THPT quốc gia 2019 sẽ thay đổi như thế nào?",
-                  "14:15",
-                  "11/09/2020",
-                  "123,444"),
-              tintuc(
-                  "assets/Rectangle 17.png",
-                  "Thi THPT quốc gia 2019 sẽ thay đổi như thế nào?",
-                  "14:15",
-                  "11/09/2020",
-                  "123,444"),
-              tintuc(
-                  "assets/Rectangle 17.png",
-                  "Thi THPT quốc gia 2019 sẽ thay đổi như thế nào?",
-                  "14:15",
-                  "11/09/2020",
-                  "123,444"),
-              tintuc(
-                  "assets/Rectangle 17.png",
-                  "Thi THPT quốc gia 2019 sẽ thay đổi như thế nào?",
-                  "14:15",
-                  "11/09/2020",
-                  "123,444"),
-            ],
-          ),
-        ),
-      ],
+      ),
     );
   }
 
-  Widget a(final String a) {
-    return Text(
-      a,
-      style: const TextStyle(
-          color: Color(0xFFBEC3C9), fontWeight: FontWeight.w600, fontSize: 16),
+  Widget article(final String name) {
+    return SizedBox(
+      width: 500,
+      height: 320,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: <Widget>[
+          content("assets/Rectangle 17.png", name, "14:15", "11/09/2020",
+              "123,444"),
+          content("assets/Rectangle 17.png", name, "14:15", "11/09/2020",
+              "123,444"),
+          content("assets/Rectangle 17.png", name, "14:15", "11/09/2020",
+              "123,444"),
+          content("assets/Rectangle 17.png", name, "14:15", "11/09/2020",
+              "123,444"),
+        ],
+      ),
     );
   }
 
-  Widget tintuc(final String images, final String name, final String times,
+  Widget content(final String images, final String name, final String times,
       final String date, final String number) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Stack(
         children: [
           Positioned(
-            top: 130,
+            bottom: 2,
+            right: 2,
+            left: 2,
             child: Container(
               width: 340,
               height: 144,
@@ -334,6 +289,8 @@ class Information extends StatelessWidget {
                       width: 280,
                       child: Text(
                         name,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
                             fontSize: 16,
                             color: Color(0xFF2E2E2E),
@@ -404,7 +361,10 @@ class Information extends StatelessWidget {
               child: const Center(
                 child: Text(
                   "Nổi bật",
-                  style: TextStyle(fontSize: 10, fontWeight: FontWeight.w600,color: Colors.white),
+                  style: TextStyle(
+                      fontSize: 10,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white),
                 ),
               ),
             ),
@@ -426,14 +386,12 @@ class News extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-           Padding(
+          Padding(
             padding: const EdgeInsets.all(8.0),
             child: InkResponse(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (ctx) => const NewsPage()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (ctx) => const NewsPage()));
               },
               child: const Text(
                 "Tin mới nhất",
@@ -447,7 +405,7 @@ class News extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(10.0),
+              borderRadius: BorderRadius.circular(16.0),
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.withOpacity(0.2),
@@ -465,7 +423,7 @@ class News extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(10.0),
+              borderRadius: BorderRadius.circular(16.0),
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.withOpacity(0.2),
@@ -479,8 +437,6 @@ class News extends StatelessWidget {
                 name: "Bà Ngô Thị Minh được Thủ tướng điều động ...",
                 image: "assets/Rectangle 20.png"),
           ),
-
-
         ],
       ),
     );
@@ -498,7 +454,7 @@ class News1 extends StatelessWidget {
     return Row(
       children: [
         ClipRRect(
-            borderRadius: BorderRadius.circular(10.0),
+            borderRadius: BorderRadius.circular(16.0),
             child: Image.asset(image)),
         Padding(
           padding: const EdgeInsets.all(8.0),
@@ -515,8 +471,17 @@ class News1 extends StatelessWidget {
                         fontWeight: FontWeight.w600),
                   )),
               const SizedBox(
-                  width: 199, child: Text("Ban tổ chức cuộc thi Olympic...",style: TextStyle(color: Color(0xFFBEC3C9),fontSize: 12,fontWeight: FontWeight.w400),)),
-              const SizedBox(height: 24,),
+                  width: 199,
+                  child: Text(
+                    "Ban tổ chức cuộc thi Olympic...",
+                    style: TextStyle(
+                        color: Color(0xFFBEC3C9),
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400),
+                  )),
+              const SizedBox(
+                height: 24,
+              ),
               SizedBox(
                 width: 135,
                 child: Row(
@@ -555,9 +520,12 @@ class VTC extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-     mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text("Phát triển bởi VTC",style: TextStyle(color: Color(0xFFBEC3C9)),),
+        const Text(
+          "Phát triển bởi VTC",
+          style: TextStyle(color: Color(0xFFBEC3C9)),
+        ),
         const SizedBox(
           width: 5,
         ),
@@ -565,7 +533,8 @@ class VTC extends StatelessWidget {
         const SizedBox(
           width: 5,
         ),
-        const Text("Hotline: 1900636876",style: TextStyle(color: Color(0xFFBEC3C9)))
+        const Text("Hotline: 1900636876",
+            style: TextStyle(color: Color(0xFFBEC3C9)))
       ],
     );
   }
