@@ -1,26 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:untitled/Student/Home/news_page.dart';
-import 'package:untitled/Student/image.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:untitled/Student/Home/infor_page.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+import '../image.dart';
+class NewsPage extends StatefulWidget {
+  const NewsPage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<NewsPage> createState() => _NewsPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _NewsPageState extends State<NewsPage> {
   @override
   Widget build(BuildContext context) {
     return const SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
           child: Column(
             children: [
-              Appbar(),
-              Welcome(),
+              App_Bar(),
               SizedBox(
                 height: 30,
               ),
@@ -34,236 +32,150 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-class Appbar extends StatelessWidget {
-  const Appbar({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                children: [
-                  Image.asset(
-                    "assets/image 7.jpg",
-                    width: 18,
-                    height: 18,
-                  ),
-                  const Text(
-                    "Ban chỉ đạo",
-                    style: TextStyle(color: Color(0xFFBEC3C9), fontSize: 12),
-                  )
-                ],
-              ),
-              Column(
-                children: [
-                  Image.asset("assets/image 9.png"),
-                  const Text(
-                    "Đơn vị thực hiện ",
-                    style: TextStyle(color: Color(0xFFBEC3C9), fontSize: 12),
-                  )
-                ],
-              ),
-              Column(
-                children: [
-                  Image.asset("assets/image 8.png"),
-                  const Text(
-                    "Đơn vị đồng hành ",
-                    style: TextStyle(color: Color(0xFFBEC3C9), fontSize: 12),
-                  )
-                ],
-              ),
-            ],
-          ),
-        ),
-        Container(
-          decoration: const BoxDecoration(
-            border: Border(
-              bottom: BorderSide(
-                color: Colors.black12,
-                width: 0.5,
-              ),
-            ),
-          ),
-          width: 500,
-          height: 1,
-        )
-      ],
-    );
-  }
-}
-
-class Welcome extends StatelessWidget {
-  const Welcome({Key? key}) : super(key: key);
+class App_Bar extends StatelessWidget {
+  const App_Bar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Row(
-            children: [
-              Image.asset("assets/image 4.png"),
-              const SizedBox(
-                width: 11,
-              ),
-              const Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    width: 155,
-                    child: Text(
-                      "Xin chào",
-                      style: TextStyle(
-                          color: Color(0xFF2E2E2E),
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700),
-                    ),
-                  ),
-                  Text(
-                    "Chào mừng bạn đến với IOE!",
-                    style: TextStyle(
-                        color: Color(0xFFBEC3C9),
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600),
-                  )
-                ],
-              )
-            ],
-          ),
-        ),
-        Container(
-          height: 80,
-          width: 344,
-          decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-              color: Color(0xFF4BB0EC)),
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Image.asset("assets/avt.png"),
-                const SizedBox(
-                  width: 156,
-                  child: Text(
-                    "Đăng nhập để khám phá nhiều hơn nữa nhé",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ),
-                Container(
-                    width: 81,
-                    height: 32,
-                    decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(8)),
-                        color: Colors.white),
-                    child: const Center(
-                      child: Text(
-                        "Đăng nhập",
-                        style: TextStyle(
-                            color: Color(0xFF008BCC),
-                            fontWeight: FontWeight.w600,
-                            fontSize: 12),
-                      ),
-                    ))
-              ],
-            ),
-          ),
-        )
-      ],
-    );
+  return Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: Container(
+      width: 343,
+      child: Column(
+        children: [
+          InkResponse(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: SvgPicture.asset("assets/back.svg")),
+          Center(child: const Text("Tin tức",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w700),)),
+        ],
+      ),
+    ),
+  );
   }
 }
-
 class Information extends StatelessWidget {
   const Information({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 350,
-      child: DefaultTabController(
-        length: 4,
-        child: SizedBox(
+    return Column(
+      children: [
+        SizedBox(
+          width: 500,
           height: 30,
-          child: Column(
-            children: [
-              const TabBar(
-                indicatorColor:  Color(0xFFF76288),
-                indicatorSize: TabBarIndicatorSize.label,
-                isScrollable: true,
-                labelColor: Colors.black,
-                unselectedLabelColor: Color(0xFFBEC3C9),
-                tabs: [
-                  Tab(
-                    text: "Tin từ ban tổ chức",
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: <Widget>[
+              InkResponse(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (ctx) => const InforPage()));
+                  },
+                  child: a("Tin từ ban tổ chức")),
+              const SizedBox(
+                width: 23,
+              ),
+              Column(
+                children: [
+                  const Text(
+                    "Sự kiện",
+                    style: TextStyle(
+                        color: Color(0xFF404D59),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 16),
                   ),
-                  Tab(text: "Sự kiện"),
-                  Tab(text: "Tin tức muôn nơi"),
-                  Tab(text: "Tạp chí tiếng anh"),
+                  Container(
+                    width: 40,
+                    height: 3,
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(32)),
+                      color: Color(0xFFF76288),
+                    ),
+                  )
                 ],
               ),
-              Expanded(
-                child: TabBarView(
-                  children: [
-                    article(
-                        "Học sinh trung học cơ sở được xét tốt nghiệp lần hai như thế nào?"),
-                    article(
-                        "Thi THPT quốc gia 2019 sẽ thay đổi như thế nào?"),
-                    article(
-                        "Bộ GDĐT đưa ra tiêu chuẩn, điều kiện xét thăng hạng giảng viên đại học"),
-                    article(
-                        "Học sinh Việt Nam đang được đào tạo các trình độ tại Hungary ")
-                  ],
-                ),
+              const SizedBox(
+                width: 23,
               ),
+              InkResponse(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (ctx) => const InforPage()));
+                  },
+                  child: a("Tin tức muôn nơi")),
+              const SizedBox(
+                width: 23,
+              ),
+              InkResponse(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (ctx) => const InforPage()));
+                  },
+                  child: a("Tạp chí tiếng anh")),
             ],
           ),
         ),
-      ),
+        SizedBox(
+          width: 500,
+          height: 320,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: <Widget>[
+              tintuc(
+                  "assets/Rectangle 17.png",
+                  "Thi THPT quốc gia 2019 sẽ thay đổi như thế nào?",
+                  "14:15",
+                  "11/09/2020",
+                  "123,444"),
+              tintuc(
+                  "assets/Rectangle 17.png",
+                  "Thi THPT quốc gia 2019 sẽ thay đổi như thế nào?",
+                  "14:15",
+                  "11/09/2020",
+                  "123,444"),
+              tintuc(
+                  "assets/Rectangle 17.png",
+                  "Thi THPT quốc gia 2019 sẽ thay đổi như thế nào?",
+                  "14:15",
+                  "11/09/2020",
+                  "123,444"),
+              tintuc(
+                  "assets/Rectangle 17.png",
+                  "Thi THPT quốc gia 2019 sẽ thay đổi như thế nào?",
+                  "14:15",
+                  "11/09/2020",
+                  "123,444"),
+            ],
+          ),
+        ),
+      ],
     );
   }
 
-  Widget article(final String name) {
-    return SizedBox(
-      width: 500,
-      height: 320,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        children: <Widget>[
-          content("assets/Rectangle 17.png", name, "14:15", "11/09/2020",
-              "123,444"),
-          content("assets/Rectangle 17.png", name, "14:15", "11/09/2020",
-              "123,444"),
-          content("assets/Rectangle 17.png", name, "14:15", "11/09/2020",
-              "123,444"),
-          content("assets/Rectangle 17.png", name, "14:15", "11/09/2020",
-              "123,444"),
-        ],
-      ),
+  Widget a(final String a) {
+    return Text(
+      a,
+      style: const TextStyle(
+          color: Color(0xFFBEC3C9), fontWeight: FontWeight.w600, fontSize: 16),
     );
   }
 
-  Widget content(final String images, final String name, final String times,
+  Widget tintuc(final String images, final String name, final String times,
       final String date, final String number) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Stack(
         children: [
           Positioned(
-            bottom: 2,
-            right: 2,
-            left: 2,
+            top: 130,
             child: Container(
               width: 340,
               height: 144,
@@ -289,8 +201,6 @@ class Information extends StatelessWidget {
                       width: 280,
                       child: Text(
                         name,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
                             fontSize: 16,
                             color: Color(0xFF2E2E2E),
@@ -361,10 +271,7 @@ class Information extends StatelessWidget {
               child: const Center(
                 child: Text(
                   "Nổi bật",
-                  style: TextStyle(
-                      fontSize: 10,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white),
+                  style: TextStyle(fontSize: 10, fontWeight: FontWeight.w600,color: Colors.white),
                 ),
               ),
             ),
@@ -374,7 +281,6 @@ class Information extends StatelessWidget {
     );
   }
 }
-
 class News extends StatelessWidget {
   const News({Key? key}) : super(key: key);
 
@@ -386,20 +292,14 @@ class News extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: InkResponse(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (ctx) => const NewsPage()));
-              },
-              child: const Text(
-                "Tin mới nhất",
-                style: TextStyle(
-                    fontSize: 16,
-                    color: Color(0xFF7D8895),
-                    fontWeight: FontWeight.w700),
-              ),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text(
+              "Tin mới nhất",
+              style: TextStyle(
+                  fontSize: 16,
+                  color: Color(0xFF7D8895),
+                  fontWeight: FontWeight.w700),
             ),
           ),
           Container(
@@ -437,6 +337,8 @@ class News extends StatelessWidget {
                 name: "Bà Ngô Thị Minh được Thủ tướng điều động ...",
                 image: "assets/Rectangle 20.png"),
           ),
+
+
         ],
       ),
     );
@@ -471,17 +373,8 @@ class News1 extends StatelessWidget {
                         fontWeight: FontWeight.w600),
                   )),
               const SizedBox(
-                  width: 199,
-                  child: Text(
-                    "Ban tổ chức cuộc thi Olympic...",
-                    style: TextStyle(
-                        color: Color(0xFFBEC3C9),
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400),
-                  )),
-              const SizedBox(
-                height: 24,
-              ),
+                  width: 199, child: Text("Ban tổ chức cuộc thi Olympic...",style: TextStyle(color: Color(0xFFBEC3C9),fontSize: 12,fontWeight: FontWeight.w400),)),
+              const SizedBox(height: 24,),
               SizedBox(
                 width: 135,
                 child: Row(
@@ -522,10 +415,7 @@ class VTC extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text(
-          "Phát triển bởi VTC",
-          style: TextStyle(color: Color(0xFFBEC3C9)),
-        ),
+        const Text("Phát triển bởi VTC",style: TextStyle(color: Color(0xFFBEC3C9)),),
         const SizedBox(
           width: 5,
         ),
@@ -533,8 +423,7 @@ class VTC extends StatelessWidget {
         const SizedBox(
           width: 5,
         ),
-        const Text("Hotline: 1900636876",
-            style: TextStyle(color: Color(0xFFBEC3C9)))
+        const Text("Hotline: 1900636876",style: TextStyle(color: Color(0xFFBEC3C9)))
       ],
     );
   }
