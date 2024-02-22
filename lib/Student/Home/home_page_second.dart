@@ -27,7 +27,6 @@ class _HomePageSecond extends State<HomePageSecond> {
                 height: 10,
               ),
               Information(),
-
             ],
           ),
         ),
@@ -46,12 +45,12 @@ class _AWidget extends StatelessWidget {
       child: Column(
         children: [
           _ListItemWidget(),
+          SizedBox(height: 30,),
           _TextWidget(),
           SizedBox(
             height: 20,
           ),
           _Item1Widget(),
-
         ],
       ),
     );
@@ -78,7 +77,12 @@ class _AppBarWidget extends StatelessWidget {
             ),
             child: const _WelcomeWidget(),
           ),
-          const Positioned(top: 70, child: _NameWidget())
+          const Positioned(
+            top: 70,
+            left: 0,
+            right: 0,
+            child: _NameWidget(),
+          )
         ],
       ),
     );
@@ -142,9 +146,9 @@ class _NameWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Container(
-        decoration:  BoxDecoration(
+        decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: const BorderRadius.all(Radius.circular(14)),
+          borderRadius: const BorderRadius.all(Radius.circular(16)),
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.2),
@@ -154,30 +158,35 @@ class _NameWidget extends StatelessWidget {
             ),
           ],
         ),
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
+                // ví dụ row width = 50
+                // avatar 10
+                // sizebox 10
+                // Expanded(column): 50 -10 -10
                 Image.asset(
                   "assets/avt.png",
                 ),
                 const SizedBox(
                   width: 10,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      width: 250,
-                      child: Row(
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
-                            "Trần Đình Đức",
-                            style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.w700),
+                          const Expanded(
+                            child: Text(
+                              "Trần Đình Đức",
+                              style: TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.w700),
+                            ),
                           ),
                           Container(
                             height: 21,
@@ -199,62 +208,62 @@ class _NameWidget extends StatelessWidget {
                           )
                         ],
                       ),
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    SizedBox(
-                      width: 200,
-                      child: Row(
-                        children: [
-                          const Text(
-                            "ID: ",
-                            style: TextStyle(
-                                fontSize: 11, color: Color(0xFF7D8895)),
-                          ),
-                          const Text(
-                            "123971847",
-                            style: TextStyle(
-                                fontSize: 11, color: Color(0xFFBEC3C9)),
-                          ),
-                          const SizedBox(
-                            width: 8,
-                          ),
-                          SvgPicture.asset("assets/Rectangle 46.svg"),
-                          const SizedBox(
-                            width: 8,
-                          ),
-                          const Text(
-                            "Khối: ",
-                            style: TextStyle(
-                                fontSize: 11, color: Color(0xFF7D8895)),
-                          ),
-                          const Text(
-                            "3",
-                            style: TextStyle(
-                                fontSize: 11, color: Color(0xFFBEC3C9)),
-                          ),
-                          const SizedBox(
-                            width: 8,
-                          ),
-                          SvgPicture.asset("assets/Rectangle 46.svg"),
-                          const SizedBox(
-                            width: 8,
-                          ),
-                          const Text(
-                            "Lớp:",
-                            style: TextStyle(
-                                fontSize: 11, color: Color(0xFF7D8895)),
-                          ),
-                          const Text(
-                            " 3A",
-                            style: TextStyle(
-                                fontSize: 11, color: Color(0xFFBEC3C9)),
-                          ),
-                        ],
+                      const SizedBox(
+                        height: 5,
                       ),
-                    ),
-                  ],
+                      SizedBox(
+                        width: 200,
+                        child: Row(
+                          children: [
+                            const Text(
+                              "ID: ",
+                              style: TextStyle(
+                                  fontSize: 11, color: Color(0xFF7D8895)),
+                            ),
+                            const Text(
+                              "123971847",
+                              style: TextStyle(
+                                  fontSize: 11, color: Color(0xFFBEC3C9)),
+                            ),
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            SvgPicture.asset("assets/Rectangle 46.svg"),
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            const Text(
+                              "Khối: ",
+                              style: TextStyle(
+                                  fontSize: 11, color: Color(0xFF7D8895)),
+                            ),
+                            const Text(
+                              "3",
+                              style: TextStyle(
+                                  fontSize: 11, color: Color(0xFFBEC3C9)),
+                            ),
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            SvgPicture.asset("assets/Rectangle 46.svg"),
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            const Text(
+                              "Lớp:",
+                              style: TextStyle(
+                                  fontSize: 11, color: Color(0xFF7D8895)),
+                            ),
+                            const Text(
+                              " 3A",
+                              style: TextStyle(
+                                  fontSize: 11, color: Color(0xFFBEC3C9)),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -309,12 +318,11 @@ class _NameWidget extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            SizedBox(
-              width: 290,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       RichText(
@@ -353,23 +361,23 @@ class _NameWidget extends StatelessWidget {
                       )
                     ],
                   ),
-                  Container(
-                    width: 147,
-                    height: 32,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: const Color(0xFF4BB0EC)),
-                    child: const Center(
-                        child: Text(
-                      "Nạp thêm lượt thi",
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.white),
-                    )),
-                  )
-                ],
-              ),
+                ),
+                Container(
+                  width: 147,
+                  height: 32,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: const Color(0xFF4BB0EC)),
+                  child: const Center(
+                      child: Text(
+                    "Nạp thêm lượt thi",
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white),
+                  )),
+                )
+              ],
             ),
           ],
         ),
@@ -395,7 +403,7 @@ class _ListItemWidget extends StatelessWidget {
           child: GestureDetector(
             onTap: () {},
             child: Container(
-              decoration:  BoxDecoration(
+              decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: const BorderRadius.all(Radius.circular(14)),
                 boxShadow: [
@@ -414,9 +422,8 @@ class _ListItemWidget extends StatelessWidget {
                     width: 88,
                     height: 64,
                     decoration: const BoxDecoration(
-                        color: Color(0xFFCBCBCB),
-                        borderRadius:
-                        BorderRadius.all(Radius.circular(8)),
+                      color: Color(0xFFCBCBCB),
+                      borderRadius: BorderRadius.all(Radius.circular(8)),
                     ),
                     child: Center(
                       child: AspectRatio(
@@ -432,7 +439,9 @@ class _ListItemWidget extends StatelessWidget {
                   Text(
                     _buttons[index].name,
                     style: const TextStyle(
-                        fontSize: 13, color: Color(0xFF404D59),fontWeight: FontWeight.w500),
+                        fontSize: 13,
+                        color: Color(0xFF404D59),
+                        fontWeight: FontWeight.w500),
                   ),
                 ],
               ),
@@ -441,7 +450,6 @@ class _ListItemWidget extends StatelessWidget {
         );
       }),
     );
-
   }
 }
 
@@ -534,8 +542,8 @@ class _InformationWidget extends StatelessWidget {
     return Container(
       width: 272,
       height: 100,
-      margin:  const EdgeInsets.only(bottom: 10.0),
-      decoration:  BoxDecoration(
+      margin: const EdgeInsets.only(bottom: 10.0),
+      decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: const BorderRadius.all(Radius.circular(14)),
         boxShadow: [
@@ -621,9 +629,10 @@ class _StatisticalWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 343,
-      height:92,
-      decoration:  BoxDecoration(
+      // width: 343,
+      height: 92,
+      margin: const EdgeInsets.symmetric(horizontal: 16),
+      decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: const BorderRadius.all(Radius.circular(16)),
         boxShadow: [
@@ -724,9 +733,9 @@ class Information extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return   const SizedBox(
+    return const SizedBox(
       height: 300,
-      child:  DefaultTabController(
+      child: DefaultTabController(
         length: 2,
         child: SizedBox(
           height: 30,
@@ -743,18 +752,22 @@ class Information extends StatelessWidget {
                   Tab(
                     child: Text(
                       "Bảng xếp hạng",
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                     ),
                   ),
                   Tab(
                     child: Text(
                       "Thống kê",
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               Expanded(
                 child: TabBarView(
                   children: [
@@ -778,4 +791,3 @@ class Information extends StatelessWidget {
     );
   }
 }
-
